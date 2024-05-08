@@ -34,8 +34,11 @@ export class AuthService {
 
     if(!bcrypt.compareSync(password, user.password)) return new UnauthorizedException('Unauthorized - password')
 
-    
-    return 'TODO OK'
+    const {password:_, ...restUser} = user.toJSON()
+    return {
+      user: restUser,
+      token: 'kjshdf'
+    }
 
   }
 
